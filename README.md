@@ -69,11 +69,7 @@
 - **StockTransaction** - Audit trail of all stock movements
 - **ApplicationUser** - Extended Identity user with custom properties
 
-### Key Relationships
-Category 1──────N Product
-Supplier 1──────N Product
-Product 1───────N StockTransaction
-ApplicationUser 1───N StockTransaction (CreatedBy)
+
 
 ---
 
