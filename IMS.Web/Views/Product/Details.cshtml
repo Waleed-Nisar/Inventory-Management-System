@@ -1,0 +1,77 @@
+﻿@model IMS.Application.ViewModels.ProductViewModel
+@using IMS.Domain.Enums
+@{
+    ViewData["Title"] = "Product Details";
+}
+
+<div class="row mb-3">
+    <div class="col-md-6">
+        <h2>Product Details</h2>
+    </div>
+    <div class="col-md-6 text-end">
+        @if (User.IsInRole(UserRole.Admin) || User.IsInRole(UserRole.Manager))
+        {
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
+        }
+        @if (User.IsInRole(UserRole.Admin) || User.IsInRole(UserRole.Manager) || User.IsInRole(UserRole.Staff))
+        {
+            <a asp-controller="Stock" asp-action="Create" asp-route-productId="@Model.Id" class="btn btn-primary">Stock Transaction</a>
+        }
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h4>@Model.Name</h4>
+            </div>
+            <div class="card-body">
+                <dl class="row">
+                    <dt class="col-sm-3">SKU</dt>
+                    <dd class="col-sm-9">@Model.SKU</dd>
+
+                    <dt class="col-sm-3">Description</dt>
+                    <dd class="col-sm-9">@Model.Description</dd>
+
+                    <dt class="col-sm-3">Category</dt>
+                    <dd class="col-sm-9">@Model.CategoryName</dd>
+
+                    <dt class="col-sm-3">Unit Price</dt>
+                    <dd class="col-sm-9">@Model.UnitPrice.ToString("C")</dd>
+
+                    <dt class="col-sm-3">Current Stock</dt>
+                    <dd class="col-sm-9">
+                        <span class="badge @(Model.IsLowStock ? "bg-danger" : "bg-success") fs-5">
+                            @Model.CurrentStock
+                        </span>
+                        @if (Model.IsLowStock)
+                        {
+                            <span class="text-warning ms-2">⚠️ Low Stock Alert</span>
+                        }
+                    </dd>
+
+                    <dt class="col-sm-3">Minimum Stock</dt>
+                    <dd class="col-sm-9">@Model.MinimumStock</dd>
+
+                    <dt class="col-sm-3">Status</dt>
+                    <dd class="col-sm-9">
+                        <span class="badge @(Model.IsActive ? "bg-success" : "bg-secondary")">
+                            @(Model.IsActive ? "Active" : "Inactive")
+                        </span>
+                    </dd>
+
+                    <dt class="col-sm-3">Created Date</dt>
+                    <dd class="col-sm-9">@Model.CreatedDate.ToString("g")</dd>
+
+                    @if (Model.ModifiedDate.HasValue)
+                    {
+                        <dt class="col-sm-3">Last Modified</dt>
+                        <dd class="col-sm-9">@Model.ModifiedDate.Value.ToString("g")</dd>
+                    }
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>

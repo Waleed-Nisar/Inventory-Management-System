@@ -1,0 +1,107 @@
+﻿@model IEnumerable<IMS.Application.ViewModels.ProductViewModel>
+@using IMS.Domain.Enums
+@{
+    ViewData["Title"] = "Products";
+}
+
+<div class="row mb-3">
+    <div class="col-md-6">
+        <h2>Products</h2>
+    </div>
+    <div class="col-md-6 text-end">
+        @if (User.IsInRole(UserRole.Admin) || User.IsInRole(UserRole.Manager))
+        {
+            <a asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> Create New Product
+            </a>
+        }
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>SKU</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Stock</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr class="@(item.IsLowStock ? "table-warning" : "")">
+                            <td>
+                                <strong>@item.Name</strong>
+                                @if (item.IsLowStock)
+                                {
+                                    <span class="badge bg-warning text-dark ms-2">Low Stock</span>
+                                }
+                            </td>
+                            <td>@item.SKU</td>
+                            <td>@item.CategoryName</td>
+                            <td>@item.UnitPrice.ToString("C")</td>
+                            <td>
+                                <span class="badge @(item.IsLowStock ? "bg-danger" : "bg-success")">
+                                    @item.CurrentStock
+                                </span>
+                            </td>
+                            <td>
+                                <span class="badge @(item.IsActive ? "bg-success" : "bg-secondary")">
+                                    @(item.IsActive ? "Active" : "Inactive")
+                                </span>
+                            </td>
+                            <td>
+                                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">Details</a>
+                                @if (User.IsInRole(UserRole.Admin) || User.IsInRole(UserRole.Manager))
+                                {
+                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Edit</a>
+                                }
+                                @if (User.IsInRole(UserRole.Admin))
+                                {
+                                    <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
+                                            data-bs-target="#deleteModal@(item.Id)">
+                                        Delete
+                                    </button>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@if (User.IsInRole(UserRole.Admin))
+{
+    @foreach (var item in Model)
+    {
+        <div class="modal fade" id="deleteModal@(item.Id)" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Confirm Delete</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to delete <strong>@item.Name</strong>?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <form asp-action="Delete" asp-route-id="@item.Id" method="post" class="d-inline">
+                            @Html.AntiForgeryToken()
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}

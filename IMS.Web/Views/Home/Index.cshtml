@@ -1,0 +1,137 @@
+﻿@model IMS.Application.ViewModels.DashboardViewModel
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Dashboard</h2>
+        <hr />
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="card text-white bg-primary">
+            <div class="card-body">
+                <h5 class="card-title">Total Products</h5>
+                <h2>@Model.TotalProducts</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-white bg-success">
+            <div class="card-body">
+                <h5 class="card-title">Categories</h5>
+                <h2>@Model.TotalCategories</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-white bg-warning">
+            <div class="card-body">
+                <h5 class="card-title">Low Stock Items</h5>
+                <h2>@Model.LowStockProductsCount</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-white bg-info">
+            <div class="card-body">
+                <h5 class="card-title">Total Stock Value</h5>
+                <h2>@Model.TotalStockValue.ToString("C")</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (Model.LowStockProducts.Any())
+{
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header bg-warning text-dark">
+                    <h5 class="mb-0">⚠️ Low Stock Alert</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Category</th>
+                                    <th>Current Stock</th>
+                                    <th>Minimum Stock</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var product in Model.LowStockProducts)
+                                {
+                                    <tr>
+                                        <td>@product.Name</td>
+                                        <td>@product.Category.Name</td>
+                                        <td><span class="badge bg-danger">@product.CurrentStock</span></td>
+                                        <td>@product.MinimumStock</td>
+                                        <td>
+                                            <a asp-controller="Stock" asp-action="Create" asp-route-productId="@product.Id"
+                                               class="btn btn-sm btn-primary">Add Stock</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Recent Stock Transactions</h5>
+            </div>
+            <div class="card-body">
+                @if (Model.RecentTransactions.Any())
+                {
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Product</th>
+                                    <th>Type</th>
+                                    <th>Quantity</th>
+                                    <th>Stock After</th>
+                                    <th>By</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var transaction in Model.RecentTransactions)
+                                {
+                                    var badgeClass = transaction.TransactionType == IMS.Domain.Enums.TransactionType.StockIn
+                                    ? "bg-success" : "bg-danger";
+                                    <tr>
+                                        <td>@transaction.CreatedDate.ToString("g")</td>
+                                        <td>@transaction.Product.Name</td>
+                                        <td><span class="badge @badgeClass">@transaction.TransactionType</span></td>
+                                        <td>@transaction.Quantity</td>
+                                        <td>@transaction.StockAfter</td>
+                                        <td>@transaction.CreatedBy</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <p class="text-muted">No recent transactions.</p>
+                }
+            </div>
+        </div>
+    </div>
+</div>

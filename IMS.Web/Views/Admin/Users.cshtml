@@ -1,0 +1,77 @@
+﻿@model IEnumerable<IMS.Web.Controllers.UserViewModel>
+@using IMS.Domain.Enums
+@{
+    ViewData["Title"] = "User Management";
+}
+
+<h2>User Management</h2>
+<hr />
+
+<div class="card">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Full Name</th>
+                        <th>Email</th>
+                        <th>Roles</th>
+                        <th>Status</th>
+                        <th>Created</th>
+                        <th>Last Login</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model)
+                    {
+                        <tr>
+                            <td>@user.FullName</td>
+                            <td>@user.Email</td>
+                            <td><span class="badge bg-info">@user.Roles</span></td>
+                            <td>
+                                <span class="badge @(user.IsActive ? "bg-success" : "bg-secondary")">
+                                    @(user.IsActive ? "Active" : "Inactive")
+                                </span>
+                            </td>
+                            <td>@user.CreatedDate.ToString("d")</td>
+                            <td>@(user.LastLoginDate?.ToString("g") ?? "Never")</td>
+                            <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-sm btn-secondary dropdown-toggle" type="button"
+                                            data-bs-toggle="dropdown">
+                                        Manage
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><h6 class="dropdown-header">Change Role</h6></li>
+                                        @foreach (var role in UserRole.GetAllRoles())
+                                        {
+                                            <li>
+                                                <form asp-action="ChangeRole" method="post" class="d-inline">
+                                                    @Html.AntiForgeryToken()
+                                                    <input type="hidden" name="userId" value="@user.Id" />
+                                                    <input type="hidden" name="newRole" value="@role" />
+                                                    <button type="submit" class="dropdown-item">@role</button>
+                                                </form>
+                                            </li>
+                                        }
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li>
+                                            <form asp-action="ToggleActive" method="post" class="d-inline">
+                                                @Html.AntiForgeryToken()
+                                                <input type="hidden" name="userId" value="@user.Id" />
+                                                <button type="submit" class="dropdown-item">
+                                                    @(user.IsActive ? "Deactivate" : "Activate")
+                                                </button>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

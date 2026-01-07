@@ -1,0 +1,55 @@
+﻿@model IMS.Application.ViewModels.StockTransactionViewModel
+@{
+    ViewData["Title"] = "Stock Transaction";
+}
+
+<h2>Create Stock Transaction</h2>
+<hr />
+
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="Create" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="mb-3">
+                <label asp-for="ProductId" class="form-label"></label>
+                <select asp-for="ProductId" class="form-select" asp-items="ViewBag.Products">
+                    <option value="">-- Select Product --</option>
+                </select>
+                <span asp-validation-for="ProductId" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="TransactionType" class="form-label"></label>
+                <select asp-for="TransactionType" class="form-select" asp-items="ViewBag.TransactionTypes">
+                    <option value="">-- Select Type --</option>
+                </select>
+                <span asp-validation-for="TransactionType" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Quantity" class="form-label"></label>
+                <input asp-for="Quantity" class="form-control" type="number" />
+                <span asp-validation-for="Quantity" class="text-danger"></span>
+                <small class="text-muted">For adjustments, enter the new total stock</small>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Remarks" class="form-label"></label>
+                <textarea asp-for="Remarks" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="Remarks" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary">Create Transaction</button>
+                <a asp-controller="Product" asp-action="Index" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

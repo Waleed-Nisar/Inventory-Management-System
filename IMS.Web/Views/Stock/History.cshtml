@@ -1,0 +1,67 @@
+﻿@model IEnumerable<IMS.Domain.Entities.StockTransaction>
+@{
+    ViewData["Title"] = "Transaction History";
+    var productName = ViewBag.ProductName as string;
+}
+
+<div class="row mb-3">
+    <div class="col-md-6">
+        <h2>Transaction History</h2>
+        <h5 class="text-muted">Product: @productName</h5>
+    </div>
+    <div class="col-md-6 text-end">
+        <a asp-controller="Product" asp-action="Index" class="btn btn-secondary">Back to Products</a>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        @if (Model.Any())
+        {
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Type</th>
+                            <th>Quantity</th>
+                            <th>Stock Before</th>
+                            <th>Stock After</th>
+                            <th>Remarks</th>
+                            <th>Created By</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var transaction in Model)
+                        {
+                            var badgeClass = transaction.TransactionType == IMS.Domain.Enums.TransactionType.StockIn
+                            ? "bg-success"
+                            : transaction.TransactionType == IMS.Domain.Enums.TransactionType.StockOut
+                            ? "bg-danger"
+                            : "bg-warning";
+
+                            <tr>
+                                <td>@transaction.CreatedDate.ToString("g")</td>
+                                <td>
+                                    <span class="badge @badgeClass">
+                                        @transaction.TransactionType.ToString()
+                                    </span>
+                                </td>
+                                <td>@transaction.Quantity</td>
+                                <td>@transaction.StockBefore</td>
+                                <td><strong>@transaction.StockAfter</strong></td>
+                                <td>@transaction.Remarks</td>
+                                <td>@transaction.CreatedBy</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+            <p class="text-muted">No transaction history available for this product.</p>
+        }
+    </div>
+</div>
+

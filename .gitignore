@@ -1,0 +1,102 @@
+# .gitignore for ASP.NET Core Projects
+
+## Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+## Visual Studio cache/options
+.vs/
+.vscode/
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+## User-specific files
+*.userprefs
+
+## Build Results of an ATL Project
+[Dd]ebugPS/
+[Rr]eleasePS/
+
+## Files built by Visual Studio
+*_i.c
+*_p.c
+*_h.h
+*.ilk
+*.meta
+*.obj
+*.iobj
+*.pch
+*.pdb
+*.ipdb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.tmp_proj
+*_wpftmp.csproj
+*.log
+*.vspscc
+*.vssscc
+.builds
+*.pidb
+*.svclog
+*.scc
+
+## ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+## SQL Server files
+*.mdf
+*.ldf
+*.ndf
+
+## NuGet Packages
+*.nupkg
+**/packages/*
+!**/packages/build/
+*.nuget.props
+*.nuget.targets
+
+## Local databases
+*.db
+*.db-shm
+*.db-wal
+
+## Secrets (CRITICAL!)
+appsettings.Development.json
+appsettings.Production.json
+secrets.json
+.env
+*.pfx
+*.key
+
+## Node (if using npm for frontend)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+## Docker (will add later)
+docker-compose.override.yml
+
+## OS files
+.DS_Store
+Thumbs.db
