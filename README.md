@@ -5,8 +5,6 @@
 
 > A production-ready inventory management web application built with ASP.NET Core MVC, demonstrating Clean Architecture, role-based access control, and professional development practices.
 
-![Dashboard Preview](<img width="1895" height="930" alt="Screenshot 2026-01-07 144904" src="https://github.com/user-attachments/assets/089f3378-ce03-4d50-b6c6-fc3cddcb6354" />
-)
 
 ---
 
@@ -61,30 +59,6 @@
 - [.NET 8 SDK](https://dotnet.microsoft.com/download)
 - SQL Server LocalDB (installed with Visual Studio) or SQL Server
 - Visual Studio 2022 or VS Code
-
-
-
-## 📸 Screenshots
-
-### Dashboard
-![Dashboard](<img width="1895" height="930" alt="Screenshot 2026-01-07 144904" src="https://github.com/user-attachments/assets/a66397ad-ea49-42c8-a620-da3a4642c462" />
-)
-
-### Product Management
-![Products](<img width="1891" height="815" alt="Screenshot 2026-01-07 145024" src="https://github.com/user-attachments/assets/f1ca52ac-313b-4fd3-8d2f-9e5df301cb6d" />
-)
-
-### Stock Transaction
-![Stock](<img width="1918" height="855" alt="Screenshot 2026-01-07 145109" src="https://github.com/user-attachments/assets/2a7d859c-d087-46fe-a412-708629704f94" />
-)
-
-### User Management (Admin)
-![Users](<img width="1908" height="853" alt="Screenshot 2026-01-07 145131" src="https://github.com/user-attachments/assets/2b5df1e1-15ed-44a3-8547-dc4a18ac5ddb" />
-)
-
----
-
-
 
 ## 📊 Database Schema
 
