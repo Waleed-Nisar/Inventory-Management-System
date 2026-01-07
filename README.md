@@ -5,7 +5,7 @@
 
 > A production-ready inventory management web application built with ASP.NET Core MVC, demonstrating Clean Architecture, role-based access control, and professional development practices.
 
-![Dashboard Preview](<img width="1895" height="930" alt="image" src="https://github.com/user-attachments/assets/a0901f33-737d-4cde-80b9-841506ec79d8" />
+![Dashboard Preview](<img width="1895" height="930" alt="Screenshot 2026-01-07 144904" src="https://github.com/user-attachments/assets/089f3378-ce03-4d50-b6c6-fc3cddcb6354" />
 )
 
 ---
@@ -67,18 +67,19 @@
 ## 📸 Screenshots
 
 ### Dashboard
-![Dashboard](<img width="1895" height="930" alt="image" src="https://github.com/user-attachments/assets/8f7d67cc-2c2f-4050-96a8-18b79147ff57" />)
+![Dashboard](<img width="1895" height="930" alt="Screenshot 2026-01-07 144904" src="https://github.com/user-attachments/assets/a66397ad-ea49-42c8-a620-da3a4642c462" />
+)
 
 ### Product Management
-![Products](<img width="1891" height="815" alt="image" src="https://github.com/user-attachments/assets/25023d89-a889-4d7e-892b-e69a5deaf822" />
+![Products](<img width="1891" height="815" alt="Screenshot 2026-01-07 145024" src="https://github.com/user-attachments/assets/f1ca52ac-313b-4fd3-8d2f-9e5df301cb6d" />
 )
 
 ### Stock Transaction
-![Stock](<img width="1918" height="855" alt="image" src="https://github.com/user-attachments/assets/96a7d861-ca55-4d9a-8c69-70172a073bec" />
+![Stock](<img width="1918" height="855" alt="Screenshot 2026-01-07 145109" src="https://github.com/user-attachments/assets/2a7d859c-d087-46fe-a412-708629704f94" />
 )
 
 ### User Management (Admin)
-![Users](<img width="1908" height="853" alt="image" src="https://github.com/user-attachments/assets/cc1288d9-dcdc-4a9c-ace6-f95dd25c5f8f" />
+![Users](<img width="1908" height="853" alt="Screenshot 2026-01-07 145131" src="https://github.com/user-attachments/assets/2b5df1e1-15ed-44a3-8547-dc4a18ac5ddb" />
 )
 
 ---
