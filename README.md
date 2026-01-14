@@ -102,12 +102,12 @@
 ### Login Page
 <img width="1902" height="681" alt="Screenshot 2026-01-14 081005" src="https://github.com/user-attachments/assets/b66079c4-62e4-47f1-9fb3-0510ea8ba5b5" />
 
-### Register Page Page
+### Register Page 
 <img width="1885" height="798" alt="Screenshot 2026-01-14 081023" src="https://github.com/user-attachments/assets/68b86436-3a63-4274-8a95-e7843466eaf2" />
 
 ### Dashboard
-<img width="1878" height="793" alt="Screenshot 2026-01-14 081210" src="https://github.com/user-attachments/assets/d4f781d9-5ccc-4598-acf0-70e2af12cfde" />
 <img width="1889" height="921" alt="Screenshot 2026-01-14 081103" src="https://github.com/user-attachments/assets/d1a5be39-5ae7-402e-886a-6299f349b0ca" />
+<img width="1878" height="793" alt="Screenshot 2026-01-14 081210" src="https://github.com/user-attachments/assets/d4f781d9-5ccc-4598-acf0-70e2af12cfde" />
 
 ### Products Section
 <img width="1879" height="852" alt="Screenshot 2026-01-14 081118" src="https://github.com/user-attachments/assets/83ef2577-c745-4340-a1c5-180f87bee5a7" />
