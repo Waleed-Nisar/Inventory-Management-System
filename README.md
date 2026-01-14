@@ -97,6 +97,15 @@
    - Staff: Stock transactions only
    - Viewer: Read-only access
 
+## Screenshots
+<img width="1902" height="681" alt="Screenshot 2026-01-14 081005" src="https://github.com/user-attachments/assets/b66079c4-62e4-47f1-9fb3-0510ea8ba5b5" />
+<img width="1885" height="798" alt="Screenshot 2026-01-14 081023" src="https://github.com/user-attachments/assets/68b86436-3a63-4274-8a95-e7843466eaf2" />
+<img width="1889" height="921" alt="Screenshot 2026-01-14 081103" src="https://github.com/user-attachments/assets/d1a5be39-5ae7-402e-886a-6299f349b0ca" />
+<img width="1879" height="852" alt="Screenshot 2026-01-14 081118" src="https://github.com/user-attachments/assets/83ef2577-c745-4340-a1c5-180f87bee5a7" />
+<img width="1915" height="687" alt="Screenshot 2026-01-14 081134" src="https://github.com/user-attachments/assets/8e837b6b-1e8d-4e43-9304-40598bb1410f" />
+<img width="1918" height="872" alt="Screenshot 2026-01-14 081148" src="https://github.com/user-attachments/assets/b4bae500-c504-4885-b9ad-9b2a1664a564" />
+<img width="1878" height="793" alt="Screenshot 2026-01-14 081210" src="https://github.com/user-attachments/assets/d4f781d9-5ccc-4598-acf0-70e2af12cfde" />
+
 ---
 
 
